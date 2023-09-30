@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doughnut Chart with Dropdown</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div>
+        <label for="dataSelector">Select Data:</label>
+        <select id="dataSelector" onchange="updateChart()">
+            <option value="dataSet1">Data Set 1</option>
+            <option value="dataSet2">Data Set 2</option>
+        </select>
+    </div>
+    <canvas id="myDoughnutChart"></canvas>
+
+    <script>
+        var ctx = document.getElementById('myDoughnutChart').getContext('2d');
+
+        var dataSet1 = {
+            labels: ['Label 1', 'Label 2', 'Label 3'],
+            datasets: [{
+                data: [30, 40, 30],
+                backgroundColor: ['red', 'green', 'blue'],
+            }]
+        };
+
+        var dataSet2 = {
+            labels: ['Label A', 'Label B', 'Label C'],
+            datasets: [{
+                data: [20, 50, 15],
+                backgroundColor: ['orange', 'purple', 'pink'],
+            }]
+        };
+
+        var myDoughnutChart;
+
+        // Function to create or update the chart based on the selected dataset
+        function updateChart() {
+            var selectedData = document.getElementById('dataSelector').value;
+            var data;
+
+            if (selectedData === 'dataSet1') {
+                data = dataSet1;
+            } else if (selectedData === 'dataSet2') {
+                data = dataSet2;
+            }
+
+            // Check if the chart has already been created
+            if (myDoughnutChart) {
+                // If the chart already exists, update its data
+                myDoughnutChart.data = data;
+                myDoughnutChart.update();
+            } else {
+                // If the chart doesn't exist, create it
+                myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: {
+                        // Chart options...
+                    }
+                });
+            }
+        }
+
+        // Initial chart creation
+        updateChart();
+    </script>
+</body>
+</html>

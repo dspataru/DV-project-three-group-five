@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
+<script src="https://code.jscharting.com/latest/jscharting.js"></script>
+<script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></script>
+
+
+</head>
+<body style="background-color:white;">
+
+  <div>
+    <label for="dataSelector">Select a portfolio type:</label>
+    <select id="dataSelector" onchange="update_doughnutChart()">
+        <option value="lowRisk">Low Risk</option>
+        <option value="medRisk">Medium Risk</option>
+        <option value="highRisk">High Risk</option>
+    </select>
+  </div>
+
+  
+  <div id="doughnutChartContainer" style="width: 400px; height: 400px;"> 
+    <canvas id="ETF_doughnutChart"></canvas>
+  </div>
+
+
+  <div id="lineChartContainer" style="width: 700px; height: 400px;"> 
+    <canvas id="portfolioHistory_lineChart"></canvas>
+  </div>
+  <button id="YTD" data-new-data="YTD">YTD</button>
+  <button id="1Y" data-new-data="1Y">1Y</button>
+  <button id="2Y" data-new-data="2Y">2Y</button>
+
+  <div id="gaugeChart" style="max-width: 400px; height: 370px;margin: 0px auto;"></div>
+  
+  <script src="static/js/doughnut_chart.js"></script>
+  <script src="static/js/line_chart.js"></script>
+  <script src="static/js/gauge_chart_2.js"></script>
+
+
+</body>
+</html>
