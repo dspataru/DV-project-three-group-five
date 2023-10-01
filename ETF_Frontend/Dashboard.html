@@ -148,8 +148,32 @@
         </div>
 
        <!-- Chart_Section -->
+       <div class="chart_section">
+        <div class="chart_container">
+            <h1>Performance Chart</h1>
+       <div class="Chart_right dropdown-list" id="date_list">
+          <ul>
+            <div class="date">
+                <li><h3>Date Range</h3></li>
+                <li><h3>From:</h3></li>
+                  <input type = "date">
+                  <li><h3>To:</h3></li>
+                  <input type = "date">
+              </div>
+            </ul>
+            <ul>
+                  <li><h3>1D</h3></li>
+                  <li><h3>5D</h3></li>
+                  <li><h3>1M</h3></li>
+                  <li><h3>6M</h3></li>
+                  <li><h3>YTD</h3></li>
+                  <li><h3>1Y</h3></li>
+                  <li><h3>5Y</h3></li>
+            </ul>
+          </div>  
        <canvas id="chart"></canvas>
-
+      </div>
+      </div>
 
         <!-- TABLE_Section -->
         <div class="recent-orders">
@@ -205,8 +229,6 @@
           </table>
           <a href="#">Show All</a>
         </div>
- 
-
 
     <!-- Footer Section -->
     <div class="footer__container">
@@ -282,6 +304,71 @@
         </section>
       </div>
     </main>
+    <!-----------------footer Section end here------------------------->
+    <!-----------------main end here------------------------->
+    <!---------------- Right Section Starts------------------------->
+      
+      <!----------------  END of TOP Sectiom------------------------->
+
+      <div class="right">
+      <div class="recent-updates">
+        <h1>Info about ETFs</h1>
+          <div class="updates">
+            <div class="update">
+              <div class="ETF_name">
+                <p><b>Pimco Active Bond Exchange-Traded Fund (BOND) </b>is a well-diversified fund including government related, securitized and investment grade corporate debt. 75% of the portfolio holdings being investment-grade credit ratings, and 65% boast AAA ratings. </p>
+                <small class="text-muted">AAA rated</small> 
+              </div>
+            </div>
+            <div class="update">
+              <div class="ETF_name">
+                <p><b>Vanguard FTSE Europe ETF (VGK)</b> allocates its investments to both emerging stocks and emerging nations, including but not limited to China, Taiwan, India, and Brazil. The fund's primary sectors of focus are financial services, technology, and consumer cyclical industries.</p>
+                <small class="text-muted">Higher levels of risk</small> 
+              </div>
+          </div>
+          <div class="update">
+            <div class="ETF_name">
+              <p><b>SPDR S&P 500 ETF Trust (SPY)</b> trades on the NYSE Arca and is designed to track the S&P 500 stock market index. The S&P 500 represents 80% of the North American market and includes companies across all sectors. It is frequently used as a benchmark for the market as whole.</p>
+              <small class="text-muted">Stable or risky?</small> 
+            </div>
+        </div>
+        <div class="update">
+          <div class="ETF_name">
+            <p><b>Schwab Emerging Markets Equity ETF (SCHE)</b> invests in emerging stocks as well as emerging countries such as China, Taiwan, India and Brazil.  Its top sectors are financial services, technology and consumer cyclical.</p>
+            <small class="text-muted">Higher levels of risk</small> 
+          </div>
+      </div>
+        <a href="#">Show more</a>
+        </div>
+      </div>
+
+      <div class="Other_ETFs">
+        <h1>People Also Viewed</h1>
+        <div class="item online">
+          <div class="icon">
+            <h2>BFIT</h2>
+          </div>
+          <div class="right">
+            <div class="info">
+
+            </div>
+          </div>
+        </div>
+        <div id="analytics">
+          <!-- Add items div here | JS insertion -->
+        </div>
+        <div class="item add-product">
+          <div>
+            <span class="material-icons-sharp"> add </span>
+            <h3></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
     <script src="app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./main.js"></script>
