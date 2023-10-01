@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETF website</title>
+    <link rel = "stylesheet" href="Dashboard_style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src='https://cdn.plot.ly/plotly-2.26.0.min.js'></script>
+</head>
+<body>
+    <!----------SIDE BAR----------------------->
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="./images/logo.png" alt="Logo" />
+            <a id="navbar__logo">Financ<span class="danger">ETF</span></a>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-icons-sharp"> close </span>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <a href="#" class="active">
+            <span class="material-icons-sharp"> dashboard </span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> person_outline </span>
+            <h3>View Profile</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> receipt_long </span>
+            <h3>Investments</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> insights </span>
+            <h3>Analytics</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> mail_outline </span>
+            <h3>Messages</h3>
+            <span class="message-count">26</span>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> report_gmailerrorred </span>
+            <h3>Reports</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> settings </span>
+            <h3>Settings</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> add </span>
+            <h3>Add ETFs</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> logout </span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+          <!----------SIDE BAR----------------------->
+      <main>
+        <nav class="navbar">
+          <div class="navbar__container">
+            <a id="navbar__dashboard">Dashboard</a>
+            <div class="navbar__toggle" id="mobile-menu">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+              <li class="navbar__item">
+                <a href="/index.html" class="navbar__links">Home</a>                 
+              </li>
+              <li class="navbar__btn">
+              <div class = "button menu-dropdown" onclick = "openDropdown()">
+                Portfolio
+               </div>
+              <a href="#" ></a>  
+              <div class="dropdown-list" id = "list">
+                <ul>
+                <li><p>Conservative</p></li>
+                <li><p>Balanced</p></li>
+                <li><p href="#">Aggressive</p></li>
+              </ul>
+              </div>               
+              </li>
+            </ul> 
+          </div>
+      </nav>
+  
+
+        <div class="insights">
+          <!-- ETF Ditribution -->
+          <div class="ETF_Distribution">
+            <span class="material-icons-sharp">
+              donut_large
+              </span>
+            <div class="middle">
+              <div class="left">
+                <h1>ETF </h1>
+                <h1>Distribution</h1>
+              </div>
+              <div class="progress"> 
+                <canvas id="pie_chart"></canvas>
+                <div class="number">
+                  <p>81%</p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted"> Last 24 hours </small>
+          </div>
+
+           <!-- Risk Index --Gauge -->
+           <div class="Risk_index">
+            <span class="material-icons-sharp"> report_gmailerrorred  </span>
+            <div class="middle">
+              <div class="left">
+                <h1>Risk</h1>
+                <h1>Indicator</h1>
+              </div>
+              <div class="progress">
+                <div id="gauge" class="gauge-container two"></div>
+                <div class="number">
+                  <p>62%</p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted"> Last 24 hours </small>
+          </div>
+        </div>
+
+       <!-- Chart_Section -->
+       <canvas id="chart"></canvas>
+
+
+        <!-- TABLE_Section -->
+        <div class="recent-orders">
+          <h1>Updates</h1>
+          <table id="recent-orders--table">
+            <thead>
+              <tr>
+                <th>ETF Name</th>
+                <th>Ticker Symbol</th>
+                <th>Closing Price</th>
+                <th>Trading Volume</th>
+                <th>% Change</th>
+              </tr>
+            </thead>
+            <tbody>
+               <!-- Add tbody here | JS insertion -->
+              <tr>
+                <td>Pimco Active Bond Exchange-Traded Fund</td>
+                <td>BOND</td>
+                <td>$980.37</td>
+                <td>125</td>
+                <td>27.8%</td>
+              </tr>
+              <tr>
+                <td>Schwab Emerging Markets Equity ETF</td>
+                <td>SCHE</td>
+                <td>$270.37</td>
+                <td>80</td>
+                <td>11.8%</td>
+              </tr>
+              <tr>
+                <td>SPDR S&P 500 ETF Trust</td>
+                <td>SPY</td>
+                <td>$1100.98</td>
+                <td>29</td>
+                <td>40%</td>
+              </tr>
+              <tr>
+                <td>Vanguard FTSE Europe ETF</td>
+                <td>VGK</td>
+                <td>$259.37</td>
+                <td>50</td>
+                <td>53%</td>
+              </tr>
+              <tr>
+                <td>Vanguard Russell 1000 Growth ETF</td>
+                <td>VONG</td>
+                <td>$89.37</td>
+                <td>15</td>
+                <td class="warning">-10%</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#">Show All</a>
+        </div>
+ 
+
+
+    <!-- Footer Section -->
+    <div class="footer__container">
+        <div class="footer__links">
+          <div class="footer__link--wrapper">
+            <div class="footer__link--items">
+              <h2>About Us</h2>
+              <a href="/sign__up">How it works</a> <a href="/">Testimonials</a>
+              <a href="/">Careers</a> <a href="/">Investments</a>
+              <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__link--items">
+              <h2>Contact Us</h2>
+              <a href="/">Contact</a> <a href="/">Support</a>
+              <a href="/">Destinations</a> <a href="/">Sponsorships</a>
+            </div>
+          </div>
+          <div class="footer__link--wrapper">
+            <div class="footer__link--items">
+              <h2>Social Media</h2>
+              <a href="/">Instagram</a> <a href="/">Facebook</a>
+              <a href="/">Youtube</a> <a href="/">Twitter</a>
+            </div>
+        </div>
+        <section class="social__media">
+          <div class="social__media--wrap">
+            <div class="footer__logo">
+              <a href="/" id="footer__logo"></i>FinancETF</a>
+            </div>
+            <div class="social__icons">
+              <a
+                class="social__icon--link"
+                href="/"
+                target="_blank"
+                aria-label="Facebook"
+              >
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a
+                class="social__icon--link"
+                href="/"
+                target="_blank"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                class="social__icon--link"
+                href="//www.youtube.com/channel/UCsKsymTY_4BYR-wytLjex7A?view_as=subscriber"
+                target="_blank"
+                aria-label="Youtube"
+              >
+              <i class="fab fa-youtube"></i>
+              </a>
+              <a
+                class="social__icon--link"
+                href="/"
+                target="_blank"
+                aria-label="Twitter"
+              >
+              <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                class="social__icon--link"
+                href="/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
