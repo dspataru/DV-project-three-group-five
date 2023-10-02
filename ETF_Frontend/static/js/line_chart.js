@@ -8,26 +8,56 @@ let lineChart = document.getElementById('portfolioHistory_lineChart').getContext
 // Dataset options.
 // ----------------
 
-let YTD_data = [10, 20, 15, 30, 25]; 
-let oneYear_data = [5, 10, 15, 20, 25] // default is YTD
-let twoYear_data = [30, 25, 15, 20, 25] // default is YTD
+let LR_historyData = [915, 925, 900, 950, 1000, 935, 964, 800, 817, 830, 850, 887]; // default is YTD
+let MR_historyData = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
+let HR_historyData = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
 
-let portfolioHistory_lineChart;
+//let portfolioHistory_lineChart;
 
 
 // ------------------------------------------------------------
 // Default dataset for YTD when a portfolio option is selected.
 // ------------------------------------------------------------
 
-let YTD_dataset = {
-    labels: ['January', 'February', 'March', 'April', 'May'], // need to be changed to dates from df
+let lowRisk_lineData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr','Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // need to be changed to dates from df
     datasets: [{
-        label: 'Low Risk',
-        data: YTD_data, // default is YTD
+        label: 'Conservative',
+        data: LR_historyData,
         borderColor: 'rgb(75, 192, 192)',
-        fill: false,
+        borderWidth: 2,
     }]
 };
+
+let medRisk_lineData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr','Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // need to be changed to dates from df
+    datasets: [{
+        label: 'Balanced',
+        data: MR_historyData,
+        borderColor: 'rgb(75, 192, 192)',
+        borderWidth: 2,
+    }]
+};
+
+let highRisk_lineData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr','Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // need to be changed to dates from df
+    datasets: [{
+        label: 'Growth',
+        data: HR_historyData,
+        borderColor: 'rgb(75, 192, 192)',
+        borderWidth: 2,
+    }]
+};
+
+// Generate default graph
+let portfolioHistory_lineChart = new Chart(lineChart, {
+    type: 'line',
+    data: lowRisk_lineData,
+    options: {
+        resposive: true
+    }
+});
+
 
 
 // ----------------------------------------------------
@@ -41,6 +71,7 @@ function timeline_button_event(new_data) {
     portfolioHistory_lineChart.update();   // Redraw the chart
 
 }
+
 
 
 // -----------------------------------------------
@@ -67,10 +98,19 @@ function update_timeline() {
     
 }
 
-update_timeline();
+//update_timeline();
 
 
 function update_lineChart(selectedData) {
 
+    let new_data;
+
+    // Check which portfolio option was selected
+    if (selectedData === 'Growth') {new_data = highRisk_lineData;}
+    else if (selectedData === 'Balanced') {new_data = medRisk_lineData;}
+    else {new_data = lowRisk_lineData;}
+  
+    portfolioHistory_lineChart.data = new_data;
+    portfolioHistory_lineChart.update();
 
 }

@@ -194,7 +194,7 @@
   
   .navbar__btn {
     display: flex;
-    justify-content: center;
+/*    justify-content: center;*/
     align-items: center;
     width: 100%;
   }
@@ -227,7 +227,7 @@
       .navbar__btn {
       display: flex;
       justify-content: center;
-      align-items: center;
+      /*align-items: center;*/
       text-decoration: none;
       border: none;
       outline: none;
@@ -336,6 +336,12 @@
     #mobile-menu.is-active .bar:nth-child(3) {
       transform: translateY(-8px) rotate(-45deg);
     }
+  }
+
+  #gauge-chart {
+    background-color: #000000; /* Set the background color here */
+    width: 300px; /* Set the desired width */
+    height: 200px; /* Set the desired height */ 
   }
 
   aside {
@@ -766,7 +772,7 @@ main .recent-orders {
   margin-bottom: 1rem;
 }
 
-.right .recent-updates .updates .update. .text-muted {
+.right .recent-updates .updates .update .text-muted {
   gap: 2rem;
 }
 

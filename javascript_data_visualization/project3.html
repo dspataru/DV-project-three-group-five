@@ -2,19 +2,83 @@
 <html>
 <head>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
-<script src="https://code.jscharting.com/latest/jscharting.js"></script>
-<script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></script>
+  <!-- <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
+  <title> Portfolio Dashboard Elements </title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
+  <script src="https://code.jscharting.com/latest/jscharting.js"></script>
+  <script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></script>
+
+  <style>
+    #dollarAmount {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+    }
+
+    #percentChange {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        font-size: 16px;
+    }
+
+    /* Apply green color to positive percent change */
+    .positive {
+        color: green;
+    }
+
+    /* Apply red color to negative percent change */
+    .negative {
+        color: red;
+    }
+
+    /* Apply gray color if percent unchanged */
+    .unchanged {
+      color: gray;
+    }
+
+    /*table {
+      width: 50%;
+      border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }*/
+
+  </style>
 
 </head>
 <body style="background-color:white;">
 
+  <!-- <h1>Stock Summary Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Last Price</th>
+                <th>Change</th>
+                <th>% Change</th>
+            </tr>
+        </thead>
+        <tbody id="stockTableBody">
+            Table rows will be added here dynamically
+        </tbody>
+    </table> -->
+
+  <div id="dollarAmount">$0.00</div>
+  <div id="percentChange">(+0%)</div>
+
   <div>
     <label for="dataSelector">Select a portfolio type:</label>
-    <select id="dataSelector" onchange="update_doughnutChart()">
+    <select id="dataSelector" onchange="updateCharts()">
         <option value="lowRisk">Low Risk</option>
         <option value="medRisk">Medium Risk</option>
         <option value="highRisk">High Risk</option>
@@ -38,7 +102,11 @@
   
   <script src="static/js/doughnut_chart.js"></script>
   <script src="static/js/line_chart.js"></script>
-  <script src="static/js/gauge_chart_2.js"></script>
+  <script src="static/js/gauge_chart.js"></script>
+  <script src="static/js/current_portfolio_value.js"></script>
+  <script src="static/js/update_charts.js"></script>
+  <!-- <script src="static/js/ETF_table_summary.js"></script> -->
+
 
 
 </body>

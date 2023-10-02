@@ -6,8 +6,8 @@
 // Setting the variables for the default gauge chart: low risk portfolio.
 // ----------------------------------------------------------------------
 
-let description = "<span style='fontSize: 35'>Low Risk</span>";
-let pointer_colour = '#77E6B4';
+let description = "<span style='fontSize: 20' 'font-family: poppins, sans-serif'>Conservative</span>";
+let pointer_colour = '#7FFFD4';
 let pointer_value = 425;
 
 
@@ -18,7 +18,7 @@ let pointer_value = 425;
 
 function make_gaugeChart(description, pointer_colour, pointer_value) {
 
-  gauge_chart = new JSC.chart('gaugeChart', { 
+  gauge_chart = new JSC.chart('gauge_chart', { 
     type: 'gauge ', 
     legend_visible: false, 
     chartArea_boxVisible: false, 
@@ -28,10 +28,10 @@ function make_gaugeChart(description, pointer_colour, pointer_value) {
     }, 
     palette: { 
       ranges: [ 
-        { value: 0, color: '#77E6B4' }, 
+        { value: 0, color: 'aquamarine' }, 
         { value: 1/3, color: '#FFD221' }, 
-        { value: 2/3, color: '#D0312D' }, 
-        { value: 1, color: '#D0312D' }, 
+        { value: 2/3, color: '#A94064' }, 
+        { value: 1, color: '#A94064' }, 
       ] 
     }, 
     yAxis: { 
@@ -58,7 +58,7 @@ function make_gaugeChart(description, pointer_colour, pointer_value) {
         shape_label: { 
           text: 
             description,  // this text gets updated when the portfolio changes
-          style: { fontSize: 48 } 
+          style: { fontSize: 25 } 
         }, 
         defaultPoint: { 
           marker: { 
@@ -99,19 +99,19 @@ function updateGauge(selectedData) {
   let pointer_value;
 
   // Check which portfolio option was selected
-  if (selectedData === 'highRisk') {
-    description = "<span style='fontSize: 35'>High Risk</span>";
-    pointer_colour = '#D0312D';
+  if (selectedData === 'Growth') {
+    description = "<span style='fontSize: 20' 'font-family: poppins, sans-serif'>Growth</span>";
+    pointer_colour = '#A94064';
     pointer_value = 750;
   }
-  else if (selectedData === 'medRisk') {
-    description = "<span style='fontSize: 35'>Medium Risk</span>";
+  else if (selectedData === 'Balanced') {
+    description = "<span style='fontSize: 20' 'font-family: poppins, sans-serif'>Balanced</span>";
     pointer_colour = '#FFD221';
     pointer_value = 600;
   }
   else {
-    description = "<span style='fontSize: 35'>Low Risk</span>";
-    pointer_colour = '#77E6B4';
+    description = "<span style='fontSize: 20' 'font-family: poppins, sans-serif'>Conservative</span>";
+    pointer_colour = '#aquamarine';
     pointer_value = 425;
   }
 
