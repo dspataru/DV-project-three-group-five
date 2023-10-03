@@ -20,7 +20,8 @@ function make_gaugeChart(description, pointer_colour, pointer_value) {
 
   gauge_chart = new JSC.chart('gauge_chart', { 
     type: 'gauge', 
-    legend_visible: false, 
+    legend_visible: false,
+    targetElement: 'gauge_chart', 
     chartArea_boxVisible: false, 
     xAxis: { 
       /*Used to position marker on top of axis line.*/
@@ -73,7 +74,18 @@ function make_gaugeChart(description, pointer_colour, pointer_value) {
           } 
         }, 
         points: [[1, pointer_value]]  // this gets updated to indicate the level of risk
-      } 
+      },
+      // options = {
+      //   gauge: {
+      //     background: {
+      //       backgroundColor: 'black', // Set the background color to transparent
+      //     },
+      //   },
+      // },
+      // {
+      //   type: "area",
+      //   shape_fill: "black",
+      // } 
     ] 
   });
 
