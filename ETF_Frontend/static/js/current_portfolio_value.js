@@ -39,7 +39,7 @@ function display_portfolioValue(initialAmount, updatedAmount) {
     }
 
     // // Get the HTML elements
-    // var dollarAmountElement = document.getElementById('dollarAmount');
+    // var dollarAmountElement = document.getElementById('currentPortfolioValue');
     // var percentChangeElement = document.getElementById('percentChange');
 
     // // Update the dollar amount and percent change
