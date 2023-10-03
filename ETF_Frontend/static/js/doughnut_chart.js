@@ -9,7 +9,7 @@
 // Initializing variables.
 // -----------------------
 
-let doughnutChart = document.getElementById('pie_chart').getContext('2d'); // Get a reference to the canvas element
+let doughnutChart = document.getElementById('pie_chart').getContext('2d'); // get a reference to the canvas element
 
 
 // [BOND, SPY, VGK, SCHE, VONG]
@@ -37,7 +37,7 @@ let highRisk_data = {
 }; 
 
 
-// Setting the configurable variables for the donut chart
+// setting the configurable variables for the donut chart
 let colors = ['#A94064', '#7FFFD4', 'teal', 'pink', 'purple'];
 let bordercolor = '#ffffff';
 let hoverBorderColor = '#000000';
@@ -46,7 +46,7 @@ let ETF_names = ['BOND', 'SPY', 'VGK', 'SCHE', 'VONG'];
 let borderWidth = 4;
 
 
-// Function to make the portfolio labels
+// function to make the portfolio labels
 function portfolioLabels(portfolioData) {
   let labels = [];
   for (i=0; i<portfolioData.length; i++) {
@@ -63,8 +63,8 @@ function portfolioLabels(portfolioData) {
 let doughnut_data_LR = {
   labels: portfolioLabels(lowRisk_data.investmentAmount), // need to modify this to grab the ETF info from etf_info df
   datasets: [{
-      data: lowRisk_data.weight, // Values for each slice (need to modify to grab the weights from latest date)
-      backgroundColor: colors, // Colors for each slice
+      data: lowRisk_data.weight, // values for each slice (need to modify to grab the weights from latest date)
+      backgroundColor: colors, // colors for each slice
       borderColor: bordercolor,
       borderWidth: borderWidth,
       hoverBorderColor: hoverBorderColor,
@@ -76,8 +76,8 @@ let doughnut_data_LR = {
 let doughnut_data_MR = {
   labels: portfolioLabels(medRisk_data.investmentAmount), // need to modify this to grab the ETF info from etf_info df
   datasets: [{
-      data: medRisk_data.weight, // Values for each slice (need to modify to grab the weights from latest date)
-      backgroundColor: colors, // Colors for each slice
+      data: medRisk_data.weight, // values for each slice (need to modify to grab the weights from latest date)
+      backgroundColor: colors, // colors for each slice
       borderColor: bordercolor,
       borderWidth: borderWidth,
       hoverBorderColor: hoverBorderColor,
@@ -88,8 +88,8 @@ let doughnut_data_MR = {
 let doughnut_data_HR = {
   labels: portfolioLabels(highRisk_data.investmentAmount), // need to modify this to grab the ETF info from etf_info df
   datasets: [{
-      data: highRisk_data.weight, // Values for each slice (need to modify to grab the weights from latest date)
-      backgroundColor: colors, // Colors for each slice
+      data: highRisk_data.weight, // values for each slice (need to modify to grab the weights from latest date)
+      backgroundColor: colors, // colors for each slice
       borderColor: bordercolor,
       borderWidth: borderWidth,
       hoverBorderColor: hoverBorderColor,
@@ -113,7 +113,7 @@ let options = {
   },
   plugins: {
     legend: {
-      display: false,
+      display: false, // removing the legend
       labels: {
         color: 'rgb(255, 255, 255)'
       }
@@ -123,10 +123,11 @@ let options = {
 
 
 
-// --------------------------------------------------------------------------------------------------------------
-// Initializing the doughnut chart: The doughnut chart is initially populated with the low-risk portfolio option.
-// --------------------------------------------------------------------------------------------------------------
+// --------------------------------
+// Initializing the doughnut chart.
+// --------------------------------
 
+// the doughnut chart is initially populated with the low-risk portfolio option
 let ETF_doughnutChart = new Chart(doughnutChart, {
   type: 'doughnut',
   data: doughnut_data_LR,  // low risk ETF data
@@ -143,21 +144,11 @@ function update_doughnutChart(selectedData) {
   
   let new_data;
 
-  // Check which portfolio option was selected
+  // checking which portfolio option was selected
   if (selectedData === 'Growth') {new_data = doughnut_data_HR;}
   else if (selectedData === 'Balanced') {new_data = doughnut_data_MR;}
   else {new_data = doughnut_data_LR;}
 
-  // // Check if the chart has already been created
-  // if (ETF_doughnutChart) {
-  ETF_doughnutChart.data = new_data;
-  ETF_doughnutChart.update();
-  // }
-  // else {
-  //   ETF_doughnutChart = new Chart(doughnutChart, {
-  //     type: 'doughnut',
-  //     data: data,
-  //     options: options
-  //   });
-  // }
+  ETF_doughnutChart.data = new_data; // updating the data to the proper data based on the portfolio selection
+  ETF_doughnutChart.update(); // updating the doughnut chart
 }
