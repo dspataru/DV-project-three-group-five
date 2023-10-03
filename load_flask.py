@@ -1,9 +1,6 @@
 # Import dependencies
 from pymongo import MongoClient
-from pprint import pprint
-import pandas as pd
 import json
-from datetime import datetime
 
 # Create an instance of MongoClient
 mongo = MongoClient(port=27017)
@@ -158,4 +155,4 @@ def additionalinfo(etf):
         return jsonify({"error": f"Invalid ticker entry."}), 404
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=3000, debug=True)
+    app.run(port=9000, debug=True)
