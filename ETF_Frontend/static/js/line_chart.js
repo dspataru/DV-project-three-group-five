@@ -12,7 +12,10 @@ let LR_historyData = [915, 925, 900, 950, 1000, 935, 964, 800, 817, 830, 850, 88
 let MR_historyData = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
 let HR_historyData = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
 
-let test_data = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
+let test_data1 = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
+let test_data2 = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
+let test_data3 = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
+
 
 //let portfolioHistory_lineChart;
 
@@ -61,7 +64,6 @@ let portfolioHistory_lineChart = new Chart(lineChart, {
 });
 
 
-
 // ----------------------------------------------------
 // Function that updates the data after a button press.
 // ----------------------------------------------------
@@ -82,25 +84,18 @@ function timeline_button_event(new_data) {
 
 function update_timeline() {
     
-    // Default chart
-    portfolioHistory_lineChart = new Chart(lineChart, {
-        type: 'line',
-        data: YTD_dataset,
-        //options: options
-    });
-
     // Add a click event listener to the button
     let YTD_button = document.getElementById('YTD');
     let oneYear_button = document.getElementById('1Y');
     let twoYear_button = document.getElementById('2Y');
+
+    console.log(YTD_button);
     
-    YTD_button.addEventListener('click', () => { timeline_button_event(test_data) });
-    oneYear_button.addEventListener('click', () => { timeline_button_event(oneYear_data) });    
-    twoYear_button.addEventListener('click', () => { timeline_button_event(twoYear_data) });
+    YTD_button.addEventListener('click', () => { timeline_button_event(test_data1) });
+    oneYear_button.addEventListener('click', () => { timeline_button_event(test_data2) });    
+    twoYear_button.addEventListener('click', () => { timeline_button_event(test_data3) });
     
 }
-
-//update_timeline();
 
 
 function update_lineChart(selectedData) {

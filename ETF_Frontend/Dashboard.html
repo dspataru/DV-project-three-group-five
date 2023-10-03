@@ -160,19 +160,10 @@
             </div>
           </ul>
           <ul>
-              <li><h3>1D</h3></li>
-              <li><h3>5D</h3></li>
-              <li><h3>1M</h3></li>
-              <li><h3>6M</h3></li>
-              <li><button onclick="update_timeline('YTD')"><h3>YTD</h3></button></li>
-              <li><button onclick="update_timeline('1Y')"><h3>1Y</h3></button></li>
-              <li><h3>5Y</h3></li>
+              <li><button id="YTD" onclick="update_timeline('YTD')"><h3>YTD</h3></button></li>
+              <li><button id="1Y" onclick="update_timeline('1Y')"><h3>1Y</h3></button></li>
+              <li><button id="2Y" onclick="update_timeline('2Y')"><h3>2Y</h3></button></li>
           </ul>
-            <!-- <ul id="button_list">
-                <li><button onclick="update_timeline('YTD')">YTD</button></li>
-                <li><button onclick="update_timeline('1Y')">1Y</button></li>
-                <li><button onclick="update_timeline('2Y')">2Y</button></li>
-            </ul> -->
         </div>  
        <canvas id="portfolioHistory_lineChart"></canvas>
       </div>
