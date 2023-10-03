@@ -17,6 +17,7 @@ let today_portfolioValue_HR = 800;
 let today_portfolioValue_MR = 1000;
 let today_portfolioValue_LR = 1200;
 
+
 // -----------------------------------------------------------
 // Function to create and display the current portfolio value.
 // -----------------------------------------------------------
@@ -24,20 +25,31 @@ let today_portfolioValue_LR = 1200;
 function display_portfolioValue(initialAmount, updatedAmount) {
 
     // Calculate the percent change
-    var percentChange = ((updatedAmount - initialAmount) / initialAmount) * 100;
+    let percentChange = ((updatedAmount - initialAmount) / initialAmount) * 100;
+  
 
-    // Get the HTML elements
-    var dollarAmountElement = document.getElementById('dollarAmount');
-    var percentChangeElement = document.getElementById('percentChange');
+    let currentPortfolio_value = document.getElementById("currentPortfolioValue")
+    if (currentPortfolio_value) {
+        currentPortfolio_value.textContent = updatedAmount;
+    }
 
-    // Update the dollar amount and percent change
-    dollarAmountElement.textContent = 'Current Portfolio Value: $' + updatedAmount.toFixed(2);
-    percentChangeElement.textContent = 'Percent Change: ' + percentChange.toFixed(2) + '%';
+    let currentPortfolio_amount = document.getElementById("percentChange")
+    if (currentPortfolio_amount) {
+        currentPortfolio_amount.textContent = percentChange;
+    }
 
-    // Apply CSS class based on the sign of percentChange
-    if (percentChange > 0) {percentChangeElement.classList.add('positive');} 
-    else if (percentChange < 0) {percentChangeElement.classList.add('negative');}
-    else {percentChangeElement.classList.add('unchanged');}
+    // // Get the HTML elements
+    // var dollarAmountElement = document.getElementById('dollarAmount');
+    // var percentChangeElement = document.getElementById('percentChange');
+
+    // // Update the dollar amount and percent change
+    // dollarAmountElement.textContent = 'Current Portfolio Value: $' + updatedAmount.toFixed(2);
+    // percentChangeElement.textContent = 'Percent Change: ' + percentChange.toFixed(2) + '%';
+
+    // // Apply CSS class based on the sign of percentChange
+    // if (percentChange > 0) {percentChangeElement.classList.add('positive');} 
+    // else if (percentChange < 0) {percentChangeElement.classList.add('negative');}
+    // else {percentChangeElement.classList.add('unchanged');}
 
 }
 
@@ -51,7 +63,6 @@ display_portfolioValue(yesterday_portfolioValue_LR, today_portfolioValue_LR);
 
 
 
-
 // -----------------------------------------------------------------------------------------------
 // Function to update the portfolio value based on the selected portfolio from the drop down menu.
 // -----------------------------------------------------------------------------------------------
@@ -62,11 +73,11 @@ function update_currentPortfolio(selectedData) {
     let updated;
 
     // Check which portfolio option was selected
-    if (selectedData === 'highRisk') {
+    if (selectedData === 'Growth') {
         initial = yesterday_portfolioValue_HR;
         updated = today_portfolioValue_HR;
     }
-    else if (selectedData === 'medRisk') {
+    else if (selectedData === 'Balanced') {
         initial = yesterday_portfolioValue_MR;
         updated = today_portfolioValue_MR;
     }

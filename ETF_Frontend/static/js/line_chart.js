@@ -12,6 +12,8 @@ let LR_historyData = [915, 925, 900, 950, 1000, 935, 964, 800, 817, 830, 850, 88
 let MR_historyData = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
 let HR_historyData = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
 
+let test_data = Array.from({length: 12}, () => Math.floor(Math.random() * 40));
+
 //let portfolioHistory_lineChart;
 
 
@@ -92,7 +94,7 @@ function update_timeline() {
     let oneYear_button = document.getElementById('1Y');
     let twoYear_button = document.getElementById('2Y');
     
-    YTD_button.addEventListener('click', () => { timeline_button_event(YTD_data) });
+    YTD_button.addEventListener('click', () => { timeline_button_event(test_data) });
     oneYear_button.addEventListener('click', () => { timeline_button_event(oneYear_data) });    
     twoYear_button.addEventListener('click', () => { timeline_button_event(twoYear_data) });
     

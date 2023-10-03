@@ -1,4 +1,4 @@
-// Code was taken from: https://jscharting.com/editor/#name=CircularMarker.htm
+// Code was adapted from: https://jscharting.com/editor/#name=CircularMarker.htm
 // and modified to meet the requirements of the dashboard.
 
 
@@ -19,7 +19,7 @@ let pointer_value = 425;
 function make_gaugeChart(description, pointer_colour, pointer_value) {
 
   gauge_chart = new JSC.chart('gauge_chart', { 
-    type: 'gauge ', 
+    type: 'gauge', 
     legend_visible: false, 
     chartArea_boxVisible: false, 
     xAxis: { 
@@ -111,7 +111,7 @@ function updateGauge(selectedData) {
   }
   else {
     description = "<span style='fontSize: 20' 'font-family: poppins, sans-serif'>Conservative</span>";
-    pointer_colour = '#aquamarine';
+    pointer_colour = '#7FFFD4';
     pointer_value = 425;
   }
 

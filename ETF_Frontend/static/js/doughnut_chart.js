@@ -29,7 +29,6 @@ let medRisk_data = {
   investmentAmount: medRisk_weights.map(function(x) {return (x/100)*1000000})
 }; 
 
-console.log(medRisk_data.weight)
 
 // defining the medium risk ETF % distribution
 let highRisk_data = {
@@ -39,7 +38,7 @@ let highRisk_data = {
 
 
 // Setting the configurable variables for the donut chart
-let colors = ['#A94064', 'aquamarine', 'teal', 'pink', 'purple'];
+let colors = ['#A94064', '#7FFFD4', 'teal', 'pink', 'purple'];
 let bordercolor = '#ffffff';
 let hoverBorderColor = '#000000';
 let hoverOffset = 20;
@@ -72,8 +71,6 @@ let doughnut_data_LR = {
       hoverOffset: hoverOffset
   }]
 };
-
-console.log(doughnut_data_LR.labels)
 
 
 let doughnut_data_MR = {
