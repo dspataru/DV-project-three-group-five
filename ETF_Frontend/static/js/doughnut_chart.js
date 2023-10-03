@@ -38,7 +38,7 @@ let highRisk_data = {
 
 
 // setting the configurable variables for the donut chart
-let colors = ['#A94064', '#7FFFD4', 'teal', 'pink', 'purple'];
+let colors = ['#A94064', '#7FFFD4', 'teal', 'pink', '#800080'];
 let bordercolor = '#ffffff';
 let hoverBorderColor = '#000000';
 let hoverOffset = 20;
