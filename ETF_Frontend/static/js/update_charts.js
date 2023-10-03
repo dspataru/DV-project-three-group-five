@@ -1,4 +1,4 @@
-// 
+
 function updateCharts(portfolio) {
 
     let ETFdistribution_portfolioName = document.getElementById("portfolioType_output");
