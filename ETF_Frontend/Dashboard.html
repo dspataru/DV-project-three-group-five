@@ -20,15 +20,20 @@
       rel="stylesheet"
     />
     <script src='https://cdn.plot.ly/plotly-2.26.0.min.js'></script>
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
+    <script src="https://code.jscharting.com/latest/jscharting.js"></script>
+    <script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></script>
+  </head>
 <body>
     <!----------SIDE BAR----------------------->
     <div class="container">
       <aside>
         <div class="top">
           <div class="logo">
-            <img src="./images/logo.png" alt="Logo" />
-            <a id="navbar__logo">Financ<span class="danger">ETF</span></a>
+            <!-- <img src="./images/logo.png" alt="Logo" /> -->
+            <a id="navbar__logo">Finance<span class="danger">ETF</span></a>
           </div>
           <div class="close" id="close-btn">
             <span class="material-icons-sharp"> close </span>
@@ -75,7 +80,9 @@
           </a>
         </div>
       </aside>
-          <!----------SIDE BAR----------------------->
+
+
+      <!----------SIDE BAR----------------------->
       <main>
         <nav class="navbar">
           <div class="navbar__container">
@@ -91,14 +98,14 @@
               </li>
               <li class="navbar__btn">
               <div class = "button menu-dropdown" onclick = "openDropdown()">
-                Portfolio
+                Select a Portfolio
                </div>
               <a href="#" ></a>  
               <div class="dropdown-list" id = "list">
                 <ul>
                 <li><p>Conservative</p></li>
                 <li><p>Balanced</p></li>
-                <li><p href="#">Aggressive</p></li>
+                <li><p href="#">Growth</p></li>
               </ul>
               </div>               
               </li>
@@ -110,40 +117,31 @@
         <div class="insights">
           <!-- ETF Ditribution -->
           <div class="ETF_Distribution">
-            <span class="material-icons-sharp">
-              donut_large
-              </span>
+            <span class="material-icons-sharp"> donut_large </span>
             <div class="middle">
               <div class="left">
                 <h1>ETF </h1>
                 <h1>Distribution</h1>
+                <p id="portfolioType_output"></p>
               </div>
               <div class="progress"> 
                 <canvas id="pie_chart"></canvas>
-                <div class="number">
-                  <p>81%</p>
-                </div>
               </div>
             </div>
-            <small class="text-muted"> Last 24 hours </small>
           </div>
 
            <!-- Risk Index --Gauge -->
-           <div class="Risk_index">
+          <div class="Risk_index">
             <span class="material-icons-sharp"> report_gmailerrorred  </span>
             <div class="middle">
               <div class="left">
-                <h1>Risk</h1>
+                <h1>Risk </h1>
                 <h1>Indicator</h1>
               </div>
-              <div class="progress">
-                <div id="gauge" class="gauge-container two"></div>
-                <div class="number">
-                  <p>62%</p>
-                </div>
+              <div class="progress"> 
+                <div id="gauge_chart"></div>
               </div>
             </div>
-            <small class="text-muted"> Last 24 hours </small>
           </div>
         </div>
 
@@ -159,19 +157,24 @@
                   <input type = "date">
                   <li><h3>To:</h3></li>
                   <input type = "date">
-              </div>
-            </ul>
-            <ul>
-                  <li><h3>1D</h3></li>
-                  <li><h3>5D</h3></li>
-                  <li><h3>1M</h3></li>
-                  <li><h3>6M</h3></li>
-                  <li><h3>YTD</h3></li>
-                  <li><h3>1Y</h3></li>
-                  <li><h3>5Y</h3></li>
-            </ul>
-          </div>  
-       <canvas id="chart"></canvas>
+            </div>
+          </ul>
+          <ul>
+              <li><h3>1D</h3></li>
+              <li><h3>5D</h3></li>
+              <li><h3>1M</h3></li>
+              <li><h3>6M</h3></li>
+              <li><button onclick="update_timeline('YTD')"><h3>YTD</h3></button></li>
+              <li><button onclick="update_timeline('1Y')"><h3>1Y</h3></button></li>
+              <li><h3>5Y</h3></li>
+          </ul>
+            <!-- <ul id="button_list">
+                <li><button onclick="update_timeline('YTD')">YTD</button></li>
+                <li><button onclick="update_timeline('1Y')">1Y</button></li>
+                <li><button onclick="update_timeline('2Y')">2Y</button></li>
+            </ul> -->
+        </div>  
+       <canvas id="portfolioHistory_lineChart"></canvas>
       </div>
       </div>
 
@@ -227,7 +230,7 @@
               </tr>
             </tbody>
           </table>
-          <a href="#">Show All</a>
+          <a href="#">Back to top</a>
         </div>
 
     <!-- Footer Section -->
@@ -312,58 +315,45 @@
 
       <div class="right">
       <div class="recent-updates">
-        <h1>Info about ETFs</h1>
-          <div class="updates">
-            <div class="update">
-              <div class="ETF_name">
-                <p><b>Pimco Active Bond Exchange-Traded Fund (BOND) </b>is a well-diversified fund including government related, securitized and investment grade corporate debt. 75% of the portfolio holdings being investment-grade credit ratings, and 65% boast AAA ratings. </p>
-                <small class="text-muted">AAA rated</small> 
-              </div>
-            </div>
-            <div class="update">
-              <div class="ETF_name">
-                <p><b>Vanguard FTSE Europe ETF (VGK)</b> allocates its investments to both emerging stocks and emerging nations, including but not limited to China, Taiwan, India, and Brazil. The fund's primary sectors of focus are financial services, technology, and consumer cyclical industries.</p>
-                <small class="text-muted">Higher levels of risk</small> 
-              </div>
-          </div>
+        <h1>Current Portfolio Value</h1>
           <div class="update">
             <div class="ETF_name">
-              <p><b>SPDR S&P 500 ETF Trust (SPY)</b> trades on the NYSE Arca and is designed to track the S&P 500 stock market index. The S&P 500 represents 80% of the North American market and includes companies across all sectors. It is frequently used as a benchmark for the market as whole.</p>
-              <small class="text-muted">Stable or risky?</small> 
-            </div>
-        </div>
-        <div class="update">
-          <div class="ETF_name">
-            <p><b>Schwab Emerging Markets Equity ETF (SCHE)</b> invests in emerging stocks as well as emerging countries such as China, Taiwan, India and Brazil.  Its top sectors are financial services, technology and consumer cyclical.</p>
-            <small class="text-muted">Higher levels of risk</small> 
-          </div>
-      </div>
-        <a href="#">Show more</a>
-        </div>
-      </div>
-
-      <div class="Other_ETFs">
-        <h1>People Also Viewed</h1>
-        <div class="item online">
-          <div class="icon">
-            <h2>BFIT</h2>
-          </div>
-          <div class="right">
-            <div class="info">
-
+              <h2 id="currentPortfolioValue"></h2>
+              <p> Change since last updated: </p><p id="percentChange">%</p>
             </div>
           </div>
-        </div>
-        <div id="analytics">
-          <!-- Add items div here | JS insertion -->
-        </div>
-        <div class="item add-product">
-          <div>
-            <span class="material-icons-sharp"> add </span>
-            <h3></h3>
+      </div>
+
+      <div class="right">
+        <div class="recent-updates">
+          <h1>ETF Descriptions</h1>
+            <div class="updates">
+              <div class="update">
+                <div class="ETF_name">
+                  <p><b>Pimco Active Bond Exchange-Traded Fund (BOND) </b>is a well-diversified fund including government related, securitized and investment grade corporate debt. 75% of the portfolio holdings being investment-grade credit ratings, and 65% boast AAA ratings. </p>
+                  <small class="text-muted">AAA rated</small> 
+                </div>
+              </div>
+              <div class="update">
+                <div class="ETF_name">
+                  <p><b>Vanguard FTSE Europe ETF (VGK)</b> allocates its investments to both emerging stocks and emerging nations, including but not limited to China, Taiwan, India, and Brazil. The fund's primary sectors of focus are financial services, technology, and consumer cyclical industries.</p>
+                  <small class="text-muted">Higher levels of risk</small> 
+                </div>
+            </div>
+            <div class="update">
+              <div class="ETF_name">
+                <p><b>SPDR S&P 500 ETF Trust (SPY)</b> trades on the NYSE Arca and is designed to track the S&P 500 stock market index. The S&P 500 represents 80% of the North American market and includes companies across all sectors. It is frequently used as a benchmark for the market as whole.</p>
+                <small class="text-muted">Stable or risky?</small> 
+              </div>
+            </div>
+            <div class="update">
+              <div class="ETF_name">
+                <p><b>Schwab Emerging Markets Equity ETF (SCHE)</b> invests in emerging stocks as well as emerging countries such as China, Taiwan, India and Brazil.  Its top sectors are financial services, technology and consumer cyclical.</p>
+                <small class="text-muted">Higher levels of risk</small> 
+              </div>
+            </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 
@@ -372,5 +362,10 @@
     <script src="app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./main.js"></script>
+    <script src="static/js/doughnut_chart.js"></script>
+    <script src="static/js/line_chart.js"></script>
+    <script src="static/js/gauge_chart.js"></script>
+    <script src="static/js/current_portfolio_value.js"></script>
+    <script src="static/js/update_charts.js"></script>
 </body>
 </html>
