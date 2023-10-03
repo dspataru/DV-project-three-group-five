@@ -36,7 +36,6 @@ let highRisk_data = {
   investmentAmount: highRisk_weights.map(function(x) {return (x/100)*1000000})
 }; 
 
-
 let colors = ['#A94064', '#7FFFD4', 'teal', 'pink', '#800080'];
 let bordercolor = '#ffffff';
 let hoverBorderColor = '#000000';
