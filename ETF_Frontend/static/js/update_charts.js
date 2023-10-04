@@ -6,10 +6,10 @@ function updateCharts(portfolio) {
       ETFdistribution_portfolioName.textContent = portfolio;
     }
 
-    update_doughnutChart(portfolio);
-    updateGauge(portfolio);
-    update_lineChart(portfolio);
-    update_currentPortfolio(portfolio);
 
-  
-  }
+    weightAPIcall(weights_url, portfolio);
+    updateGauge(portfolio);
+    portfolioAPIcall(portfolio_url, portfolio);
+    update_currentPortfolio(portfolio_url, portfolio);
+    //update_calendar(portfolio_url, portfolio);
+}

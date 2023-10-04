@@ -4,43 +4,40 @@
 // -----------------------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------------
 
-
-// -----------------------
-// Initializing variables.
-// -----------------------
-
 let doughnutChart = document.getElementById('pie_chart').getContext('2d'); // get a reference to the canvas element
 
 
+
+function calculateInvestmentAmount(weights) {
+  return weights.map(function(x) {return (x/100)*1000000});
+}
+
 // [BOND, SPY, VGK, SCHE, VONG]
-let lowRisk_weights = [63, 31, 2, 0, 4];
-let medRisk_weights = [33, 42, 8, 5, 12];
+let lowRisk_weights = [17, 36, 15, 8, 24];
+let medRisk_weights = [17, 36, 15, 8, 24];
 let highRisk_weights = [17, 36, 15, 8, 24];
 
 // defining the low risk ETF % distribution
 let lowRisk_data = { 
   weight: lowRisk_weights,
-  investmentAmount: lowRisk_weights.map(function(x) {return (x/100)*1000000})
+  investmentAmount: calculateInvestmentAmount(lowRisk_weights)
 }; 
 
 // defining the medium risk ETF % distribution
 let medRisk_data = {
   weight: medRisk_weights,
-  investmentAmount: medRisk_weights.map(function(x) {return (x/100)*1000000})
+  investmentAmount: calculateInvestmentAmount(medRisk_weights)
 }; 
 
 
 // defining the medium risk ETF % distribution
 let highRisk_data = {
   weight: highRisk_weights,
-  investmentAmount: highRisk_weights.map(function(x) {return (x/100)*1000000})
+  investmentAmount: calculateInvestmentAmount(highRisk_weights)
 }; 
 
-<<<<<<< HEAD
-=======
 
-// Setting the configurable variables for the donut chart
->>>>>>> a909eb48229617eaced027acd1ac75e35c397532
+// defining the parameters for the doughnut chart
 let colors = ['#A94064', '#7FFFD4', 'teal', 'pink', '#800080'];
 let bordercolor = '#ffffff';
 let hoverBorderColor = '#000000';
