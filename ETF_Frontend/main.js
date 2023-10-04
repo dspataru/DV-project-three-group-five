@@ -1,5 +1,7 @@
 let dropdownList = document.getElementById("list");
+      
       dropdownList.style.display = "none";
+      
       function openDropdown() {
          if (dropdownList.style.display != "none") {
             dropdownList.style.display = "none";
@@ -7,87 +9,74 @@ let dropdownList = document.getElementById("list");
             dropdownList.style.display = "block";
          }
       }
+      
       let portfolio = 'Conservative'
       const p_elements = document.getElementsByTagName("p");
+      
       // access all p elements
       const totalP = p_elements.length;
+      
       // iterate through all <p> elements
       for (let i = 0; i < totalP; i++) {
+      
          const option = p_elements[i];
+      
          // add event listner to <p> element
          option.addEventListener("click", () => {
             // When a user clicks on any p element, get its innerHTML
             portfolio = option.innerHTML;
             updateCharts(portfolio); // calling the update charts function
+            updateLineChart(portfolio);
             console.log("The selected option is " + portfolio);
-            // close the dropdown list once users select an option
+
          })
       }
 
-
-
-// var mypiechart = document.getElementById("pie_chart").getContext('2d');
-// let round_graph = new Chart(mypiechart, {
-//     type:'doughnut',
-//     data:{
-//       labels:['Bonds','SPY','VGK','SCHE', 'VONG'],
-//       datasets:[{
-//         lable:'Samples',
-//         data :[
-//           60, 15, 5, 12, 8
-//         ],
-//         backgroundColor: ['#f77062','#4e73df','#36b9cc', '#8395f9', '#1cc88a'],
-//         hoverBackgroundColor: ['#1cc88a','#2e59d9', '#17a673', '#2c9faf'],
-//         hoverBorderColor: "rgba(234, 236, 244, 1)",
-//       }]
-//     },
-//     options: {
-//         plugins : {
-//             legend:{
-//                 display: false
-//             }
-//         }
-//       }
-    
-//     })
-
-
-// var mychart = document.getElementById("chart").getContext('2d');
-
-// // create new chart instance
-// var chart = new Chart(mychart, {
-//     type: 'line',
-//     data: {
-//         labels: ['Jan', 'Feb', 'Mar', 'Apr','Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-//         datasets:[
-//             {
-//                 label: 'BOND',
-//                 data: [915, 925, 900, 950, 1000, 935, 964, 800, 817, 830, 850, 887],
-//                 borderColor: 'yellow',
-//                 borderWidth: 2
-//             },
-//             {
-//                 label: 'SPY',
-//                 data: [1098, 1020, 1058, 1190, 1200, 1256, 1198, 1057, 900, 978, 1059, 962],
-//                 borderColor: 'cyan',
-//                 borderWidth: 2
-//             }
-//         ]
-//     },
-//     options: {
-//       resposive:true
-//     }}
-// );
-
-// var data = [
-// 	{
-// 		domain: { x: [0, 1], y: [0, 1] },
-// 		value: 270,
-// 		title: { text: "Risk Indicator" },
-// 		type: "indicator",
-// 		mode: "gauge+number"
-// 	}
-// ];
-
-// var layout = { width: 300, height: 300, background:false};
-// Plotly.newPlot('gauge', data, layout);
+      let portfolioHistory_lineChart;
+        function updateLineChart(p) {
+          // Destroy the existing chart instance if it exists
+          if (portfolioHistory_lineChart) {
+              portfolioHistory_lineChart.destroy();
+          };
+      
+          // Fetch new data based on the new 'p' value
+          d3.json(portfolio_url + p)
+              .then(function(data) {
+                  // Handle the JSON data here
+      
+                  data.forEach((item) => {
+                      item.dateObj = new Date(item.date);
+                  });
+      
+                  // Sort the list of dictionaries by date in ascending order
+                  data.sort((a, b) => a.dateObj - b.dateObj);
+      
+                  // Remove the dateObj key if you don't need it anymore
+                  data.forEach((item) => {
+                      delete item.dateObj;
+                  });
+      
+                  // Process the new data
+                  let portfolio_values = [];
+                  let portfolio_dates = [];
+      
+                  data.forEach(function(item) {
+                      portfolio_values.push(item[`${p}_portfolio_value`]);
+                      portfolio_dates.push(item.date);
+                  });
+      
+                  // Create the updated line chart
+                  portfolioHistory_lineChart = initializeLineChart(portfolio_values, portfolio_dates);
+                  
+                  // Display other information as needed
+                  let previousDate = portfolio_values[portfolio_values.length - 2];
+                  let currentDate = portfolio_values[portfolio_values.length - 1];
+                  display_portfolioValue(previousDate, currentDate);
+              })
+              .catch(function(error) {
+                  // Handle any errors that occur during the request
+                  console.error('Error:', error);
+              });
+            }
+            
+      

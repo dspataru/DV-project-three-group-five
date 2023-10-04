@@ -11,7 +11,6 @@ let pointer_colour = '#7FFFD4';
 let pointer_value = 425;
 
 
-
 // ---------------------------------------
 // Function to initialize the gauge chart.
 // ---------------------------------------
@@ -75,17 +74,6 @@ function make_gaugeChart(description, pointer_colour, pointer_value) {
         }, 
         points: [[1, pointer_value]]  // this gets updated to indicate the level of risk
       },
-      // options = {
-      //   gauge: {
-      //     background: {
-      //       backgroundColor: 'black', // Set the background color to transparent
-      //     },
-      //   },
-      // },
-      // {
-      //   type: "area",
-      //   shape_fill: "black",
-      // } 
     ] 
   });
 
