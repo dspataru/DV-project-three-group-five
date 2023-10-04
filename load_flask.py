@@ -1,6 +1,6 @@
 # Import dependencies
 from pymongo import MongoClient
-import json
+
 
 # Create an instance of MongoClient
 mongo = MongoClient(port=27017)
@@ -26,9 +26,11 @@ portfolio_weights = db['portfolio_weights']
 
 # import flask
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 # creating an app
 app = Flask(__name__)
+CORS(app)
 
 ###############################
        # flask routes #
