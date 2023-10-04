@@ -4,9 +4,12 @@ Group Members: Jasmine Bamba, Nikita Gahoi, Gayatri John, Daiana Spataru
 
 ## App Access
 
-insert link to app 
+https://dspataru.github.io/finance-dashboard/
 
-insert screenshot of dashboard
+<img width="944" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/13f62bc6-b49e-4261-8aa5-1133019d47dd">
+<img width="947" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/ae17fadf-3b97-4c39-8c4e-e0bafa415b76">
+<img width="945" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/c15fbbe6-c883-4170-bee9-ac17093f54c6">
+
 
 ## Table of Contents
 
@@ -82,7 +85,7 @@ Group 5 is creating a dashboard that has three portfolio options: Low-risk, medi
 
 ## The Process
 
-insert data pipeline image
+<img width="387" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/e3387a0f-8bc9-4573-a815-c6667b32ae04">
 
 ### Extract & Transform
 
@@ -256,33 +259,40 @@ Speed: MongoDB is quick at finding and getting stuff from the storage box as it'
 
 We created a new database called portfolios_db, in which each of the .csv files were imported as collections using the following lines:
 
-mongoimport --db portfolios_db --collection growth_portfolio_data --type csv --headerline --drop --file growth_portfolio_data.csv
+    mongoimport --db portfolios_db --collection growth_portfolio_data --type csv --headerline --drop --file growth_portfolio_data.csv
 
-mongoimport --db portfolios_db --collection balanced_portfolio_data --type csv --headerline --drop --file balanced_portfolio_data.csv
+    mongoimport --db portfolios_db --collection balanced_portfolio_data --type csv --headerline --drop --file balanced_portfolio_data.csv
 
-mongoimport --db portfolios_db --collection conservative_portfolio_data --type csv --headerline --drop --file conservative_portfolio_data.csv
+    mongoimport --db portfolios_db --collection conservative_portfolio_data --type csv --headerline --drop --file conservative_portfolio_data.csv
 
-mongoimport --db portfolios_db --collection vong_price_info --type csv --headerline --drop --file VONG_price_info.csv
+    mongoimport --db portfolios_db --collection vong_price_info --type csv --headerline --drop --file VONG_price_info.csv
 
- mongoimport --db portfolios_db --collection vgk_price_info --type csv --headerline --drop --file VGK_price_info.csv
+    mongoimport --db portfolios_db --collection vgk_price_info --type csv --headerline --drop --file VGK_price_info.csv
 
-mongoimport --db portfolios_db --collection spy_price_info --type csv --headerline --drop --file SPY_price_info.csv
+    mongoimport --db portfolios_db --collection spy_price_info --type csv --headerline --drop --file SPY_price_info.csv
 
-mongoimport --db portfolios_db --collection sche_price_info --type csv --headerline --drop --file SCHE_price_info.csv
+    mongoimport --db portfolios_db --collection sche_price_info --type csv --headerline --drop --file SCHE_price_info.csv
 
- mongoimport --db portfolios_db --collection bond_price_info --type csv --headerline --drop --file BOND_price_info.csv
+    mongoimport --db portfolios_db --collection bond_price_info --type csv --headerline --drop --file BOND_price_info.csv
 
-mongoimport --db portfolios_db --collection etf_additional_info --type csv --headerline --drop --file etf_additional_info.csv
+    mongoimport --db portfolios_db --collection etf_additional_info --type csv --headerline --drop --file etf_additional_info.csv
 
-mongoimport --type csv -d portfolios_db -c portfolio_weights --headerline --drop portfolio_weights.csv
+    mongoimport --type csv -d portfolios_db -c portfolio_weights --headerline --drop portfolio_weights.csv
 
-mongoimport --type csv -d portfolios_db -c etf_return_risk --headerline --drop etf_return_risk.csv
+    mongoimport --type csv -d portfolios_db -c etf_return_risk --headerline --drop etf_return_risk.csv
 
 ### 3. Creating the Flask API
 
-Once our data was in MongoDB, we used PyMongo to access and query the data. We then created a Flask API with the following routes: 
+Once our data was in MongoDB, we used PyMongo to access and query the data. We then created a Flask API with the following routes:
+
+<img width="959" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/ae4f93d7-7e46-475b-b2df-331ec72ccaff">
+
+
+<img width="959" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/19ac8af9-5740-4469-8db5-66eeee0d40c9">
 
 /api/portfolio_weights/[portfolio]:  Return the ETF allocation for each portfolio
+
+<img width="942" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/fb981b8e-d9e5-4a4a-8cd2-f0ea135a30ed">
 
 /api/portfolio_data/[portfolio]: Return the portfolio data for each portfolio
 
@@ -290,11 +300,17 @@ Once our data was in MongoDB, we used PyMongo to access and query the data. We t
 
 /api/portfolio_data/[portfolio]/[start_date]/[end_date]: Return the portfolio data for each portfolio between a given start and end date
 
+<img width="960" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/543b701f-e7c8-44c2-af04-595ac033550d">
+
 /api/return_risk/[etf]: Return the average annualized return and risk of a given ETF
+
+<img width="942" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/98cca130-17be-4d5c-a5e2-19e0eb7de769">
 
 /api/price_info/[etf]: Return price, dividend and return information of a given ETF
 
 /api/price_info/[etf]/[start_date]: Return price, dividend and return information of a given ETF from a given start date
+
+<img width="953" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/2327714c-76c8-4d71-967c-9e01f0568e55">
 
 /api/additional_info/[etf]: Return additional information on the ETF such as Net Assets, NAV, PE Ratio (TTM), Yield, YTD Daily Total Return, Beta (5Y Monthly), Expense Ration (net) and Inception Date.
 
@@ -305,7 +321,7 @@ Why did we chose SocketXP?
 - SocketXP is a simple, quick and cost-effective way to deploy your web application online.
 - It is free for 30 days
 
-insert socketxp image here
+![image](https://github.com/dspataru/DV-project-three-group-five/assets/135036996/06a1ae16-3295-45a0-a0f1-fa54d8e9f329)
 
 ### Javascript Development
 
@@ -341,14 +357,18 @@ In order to get the data to populate the charts, an API call is made using the f
 In our project, we leveraged HTML and CSS to create a visually appealing and interactive user interface.
 - HTML (Hypertext Markup Language) 
     We used HTML to create the semantic structure of our web application.
-    Key HTML components used:
-        Elements: Tags like <div>, <p>, <header>, and <footer> to structure content.
-        Forms: <form>, <input>, and <button> for user input and interaction.
-        Links: <a> tags for navigation and linking to other pages.
+
+  Key HTML components used:
+
+      Elements: Tags like <div>, <p>, <header>, and <footer> to structure content.
+      Forms: <form>, <input>, and <button> for user input and interaction.
+      Links: <a> tags for navigation and linking to other pages.
 
 - CSS (Cascading Style Sheets)
     We utilized CSS to enhance the visual appeal and user experience.
-    Key CSS features used:
+
+  Key CSS features used:
+
         Selectors: Targeting HTML elements for styling.
         Properties: Defining attributes like colors, fonts, margins, and padding.
         Layout: Creating responsive designs with flexbox and grid layouts.
