@@ -227,6 +227,7 @@ SPY: 31%
 VGK: 2%
 SCHE: 0%
 VONG: 4%
+
 ![image](https://github.com/dspataru/DV-project-three-group-five/assets/135036996/a950f905-8daa-4f24-a0e4-874aba631cf1)
 
 Balanced:
@@ -236,6 +237,7 @@ SPY: 42%
 VGK: 8%
 SCHE: 5%
 VONG: 12%
+
 ![image](https://github.com/dspataru/DV-project-three-group-five/assets/135036996/a479bdeb-9238-45d9-ad30-2177eaa3d2b9)
 
 Growth
@@ -245,6 +247,7 @@ SPY: 36%
 VGK: 15%
 SCHE: 8%
 VONG: 24%
+
 ![image](https://github.com/dspataru/DV-project-three-group-five/assets/135036996/272fca65-9eda-437a-9d7b-fa8fc673fe63)
 
 ![image](https://github.com/dspataru/DV-project-three-group-five/assets/135036996/b3f01ace-0014-4241-b477-1ade5dac860f)
@@ -366,26 +369,32 @@ The following dashboard requirements were documented:
 - Donut chart requirements:
     - Shall display the proportion of money invested in each ETF when hovering over a section of the chart
     - Shall update the proportions depending on which portfolio is selected (needs to update based on a button press)
-      <img width="358" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/8483bbbc-2804-47a1-83a2-ccb1a4cfffa2">
+
+<img width="358" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/8483bbbc-2804-47a1-83a2-ccb1a4cfffa2">
+
 
 - Gauge chart requirements:
     - Shall show which portfolio is selected (needs to update based on a button press)
-      <img width="357" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/da173f8d-4af0-43a8-9926-1dcde8404f9a">
+    
+  <img width="357" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/da173f8d-4af0-43a8-9926-1dcde8404f9a">
 
 - Line chart requirements:
     - Shall show the history of the investment change over time for each portfolio (needs to update based on a button press)
     - Shall be able to select YTD, 1Y, and 2Y views (needs to update based on a button press)
     - Shall be able to receive a start and end date from the user and update the chart accordingly (needs to update based on a calendar selection)
-      <img width="712" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/16ff9ce0-4fa7-451a-8138-39d9ff307398">
+
+  <img width="712" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/16ff9ce0-4fa7-451a-8138-39d9ff307398">
 
 - Current portfolio value requirements:
     - Shall show the current portfolio amount, the percent change from the last time the database was updated, and show an arrow indicating whether the percent change is positive (arrow up) or negative (arrow down)
     - The font colour of the percent change shall be green when positive and red when negative
-      <img width="142" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/5df9ff48-fa7e-4f07-86f5-f1290fd18cc9">
+
+  <img width="142" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/5df9ff48-fa7e-4f07-86f5-f1290fd18cc9">
 
 - ETF table summary requirements:
     - Shall show the ETF name, ticker symbol, latest closing price, trading volume, and % change from when the database was last updated
-    <img width="731" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/e318e68d-5e1a-410e-a16d-9a26faa55b5c">
+    
+<img width="731" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/e318e68d-5e1a-410e-a16d-9a26faa55b5c">
 
 In order to achieve the above requirements, two JavaScript web visualization libraries were used:
 Chart.js (https://www.chartjs.org/docs/latest/)
