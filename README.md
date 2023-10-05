@@ -316,6 +316,8 @@ Once our data was in MongoDB, we used PyMongo to access and query the data. We t
 
 Once the Flask API is working, we needed to host it on an online server so that it can be accesses by all our teammates. We used SocketXP to do this. After registering the SocketXP Client with the SocketXP Cloud Service, we could create HTTP proxy tunnel between the application running in your laptop and the SocketXP Cloud Service, via the SocketXP Client.
 
+Public url: https://nikitagahoi-15458a97-2869-4864-b6cb-5c159da0a651.socketxp.com/
+
 Why did we chose SocketXP?
 
 - SocketXP is a simple, quick and cost-effective way to deploy your web application online.
