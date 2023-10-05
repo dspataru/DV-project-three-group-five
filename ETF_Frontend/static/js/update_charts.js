@@ -5,6 +5,15 @@ function updateCharts(portfolio) {
     ETFdistribution_portfolioName.textContent = portfolio;
   };
 
+<<<<<<< HEAD
+
+    weightAPIcall(weights_url, portfolio);
+    updateGauge(portfolio);
+    portfolioAPIcall(portfolio_url, portfolio);
+    update_currentPortfolio(portfolio_url, portfolio);
+    //update_calendar(portfolio_url, portfolio);
+}
+=======
   //weightAPIcall(weights_url, portfolio);
   updateDonutChart(portfolio);
   updateGauge(portfolio);
@@ -28,3 +37,4 @@ function updateDonutChart(p){
         });
 };
 
+>>>>>>> 36a04bc4e32be091d7054c398428403b63cb3edf

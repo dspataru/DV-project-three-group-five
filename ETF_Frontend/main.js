@@ -23,6 +23,7 @@ let dropdownList = document.getElementById("list");
       
          // add event listner to <p> element
          option.addEventListener("click", () => {
+      
             // When a user clicks on any p element, get its innerHTML
             portfolio = option.innerHTML;
             updateCharts(portfolio); // calling the update charts function
@@ -30,6 +31,9 @@ let dropdownList = document.getElementById("list");
             console.log("The selected option is " + portfolio);
 
          })
+<<<<<<< HEAD
+      }
+=======
       }
 
       let portfolioHistory_lineChart;
@@ -80,3 +84,4 @@ let dropdownList = document.getElementById("list");
             }
             
       
+>>>>>>> 36a04bc4e32be091d7054c398428403b63cb3edf

@@ -19,6 +19,13 @@ function portfolioLabels(portfolioData) {
   return labels;
 }
 
+<<<<<<< HEAD
+function intializeDonutChart(weights) {
+
+  let data = {
+    weight: [weights.BOND, weights.SCHE, weights.SPY, weights.VGK, weights.VONG],
+    investmentAmount: calculateInvestmentAmount(weights)
+=======
 
 // Initialize the chart with the initial data
 function initializeDonutChart(initialData) {
@@ -33,6 +40,7 @@ chartInstances = [];
   let data = {
     weight: initialData,
     investmentAmount: calculateInvestmentAmount(initialData)
+>>>>>>> 36a04bc4e32be091d7054c398428403b63cb3edf
   }
 
   // defining the parameters for the doughnut chart
@@ -80,12 +88,36 @@ chartInstances = [];
       }
     } 
   };
+<<<<<<< HEAD
+
+  // --------------------------------
+  // Initializing the doughnut chart.
+  // --------------------------------
+  let ETF_doughnutChart = new Chart(doughnutChart, {
+=======
   
   ETF_doughnutChart = new Chart(doughnutChart, {
+>>>>>>> 36a04bc4e32be091d7054c398428403b63cb3edf
     type: 'doughnut',
     data: doughnut_data,
     options: options
   });
+<<<<<<< HEAD
+
+  return ETF_doughnutChart;
+}
+
+// Function to update the donut chart
+function weightAPIcall(weightURL, p) {
+  d3.json(weightURL + p)
+  .then(function(data) {
+    console.log(data)
+    let new_data = Object.values(data).filter((value, key) => key !== 'portfolio');
+    ETF_doughnutChart.data = new_data;
+    ETF_doughnutChart.update();
+  })
+}
+=======
 }
 
 // Make an API request to fetch new data and update the chart
@@ -104,4 +136,5 @@ function weightAPIcall(weightURL, p) {
 
 }; 
 
+>>>>>>> 36a04bc4e32be091d7054c398428403b63cb3edf
 
