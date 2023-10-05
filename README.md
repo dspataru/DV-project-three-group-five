@@ -6,6 +6,8 @@ Group Members: Jasmine Bamba, Nikita Gahoi, Gayatri John, Daiana Spataru
 
 https://dspataru.github.io/finance-dashboard/
 
+Note: CORS will have to be allowed to run the app.
+
 <img width="947" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/c5d8fa9c-ae0a-446b-a368-02d69b73c47f">
 <img width="944" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/1305ea94-9ff4-40c5-8934-d6498f8ea11a">
 <img width="944" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/b1c272f3-a7d5-41f2-b521-22fbadc2254f">
@@ -352,6 +354,7 @@ Once our data was in MongoDB, we used PyMongo to access and query the data. We t
 Once the Flask API is working, we needed to host it on an online server so that it can be accesses by all our teammates. We used SocketXP to do this. After registering the SocketXP Client with the SocketXP Cloud Service, we could create HTTP proxy tunnel between the application running in your laptop and the SocketXP Cloud Service, via the SocketXP Client.
 
 Public url: https://nikitagahoi-15458a97-2869-4864-b6cb-5c159da0a651.socketxp.com/
+Note that this url is a free trial and has a 200MB limit.
 
 Why did we chose SocketXP?
 
