@@ -2,6 +2,8 @@
 
 Group Members: Jasmine Bamba, Nikita Gahoi, Gayatri John, Daiana Spataru
 
+<img width="335" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/49ca4797-f692-4485-ba33-7778c992d5c7">
+
 ## App Access
 
 https://dspataru.github.io/finance-dashboard/
@@ -24,7 +26,13 @@ Note: CORS will have to be allowed to run the app.
 
     - HTML Folder
     - CSS Folder
-    - Javascript 
+    - Javascript
+
+## Motivation
+
+Building dashboards is a very relevant skill in Investment Management. Both Clients and Portfolio Managers are using dashboards to track portfolio performance.
+We took this opportunity to do the process from scratch, starting with extracting the data, making decisions like a portfolio manager would, and building an easy-to-follow dashboard for the clients.
+
 
 ## Meeting the Project Requirements
 
@@ -432,6 +440,14 @@ In our project, we leveraged HTML and CSS to create a visually appealing and int
 ### Hosting the App
 
 We are hosting the app on Git Pages, a simple way to host a static app online.
+
+## Conclusion
+
+We did a full-stack project, with the whole pipeline from ETL, to creating an API to building a web app. We learnt a lot on the way, new libraries on python and javascript, new concepts such as CORS, hosting a server online etc. It was a challenging project, with a huge learning curve. 
+
+Next Steps:
+
+The next steps for this project would be connecting the front end to live stock data, right now the latest data point is when the mongoDB was updated. We can even add more charts, like line charts of the individual stocks. It would also be nice to get the calendar function working.
 
 ## References
 
