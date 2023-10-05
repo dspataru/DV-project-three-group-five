@@ -6,9 +6,9 @@ Group Members: Jasmine Bamba, Nikita Gahoi, Gayatri John, Daiana Spataru
 
 https://dspataru.github.io/finance-dashboard/
 
-<img width="944" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/13f62bc6-b49e-4261-8aa5-1133019d47dd">
-<img width="947" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/ae17fadf-3b97-4c39-8c4e-e0bafa415b76">
-<img width="945" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/c15fbbe6-c883-4170-bee9-ac17093f54c6">
+<img width="947" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/c5d8fa9c-ae0a-446b-a368-02d69b73c47f">
+<img width="944" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/1305ea94-9ff4-40c5-8934-d6498f8ea11a">
+<img width="944" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/b1c272f3-a7d5-41f2-b521-22fbadc2254f">
 
 
 ## Table of Contents
@@ -144,9 +144,15 @@ Default amount is $1,000,000.
 
 We are using the yahoo_fin.stock_info library on python. This library parses information from Yahoo Finance, and we will be using this library to pull daily price, dividend and analyst information for each of our selected ETFs.
 
+<img width="539" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/2dd5dd30-39e5-4e87-a1ca-a82efae28912">
+
+
 #### 5. Transforming ETF Data
 
 Calculated Annualized Expected Return (%), Average daily total return, Dividend return,  Annualized  risk & Annualized variance, Covariance matrix etc. using extracted data to see trends and growth in each ETF
+
+<img width="759" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/76f2cf03-b643-47c6-9c7a-cb7d8e572107">
+
 
 ### Analysis
 
@@ -158,35 +164,55 @@ There is one-size-fits-all approach to portfolio allocation. Portfolio managers 
 
 Allocating assets in a manner that minimizes the overall portfolio variance. This involves calculating the covariance between the stocks and optimizing the allocation to reduce portfolio risk. You can use mathematical optimization techniques, such as the Markowitz Mean-Variance Optimization, to find the weights that minimize risk for a given level of return.
 
+<img width="639" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/5e9d8e37-7f52-46e0-b37c-346c05394ef3">
+
 - **Maximum-return portfolio**
 
 Allocating assets to optimize for maximum return while staying within your risk tolerance. This would involve selecting the stocks with the highest expected returns and allocating more capital to them.
+
+<img width="631" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/f08f4d66-5b02-4d28-9371-21994330cdb0">
 
 - **Monte Carlo Simulation:**
 
 Use simulation techniques to model different allocation scenarios and their potential outcomes based on historical data and various assumptions. This approach helps you understand the range of possible returns and risks for different allocations.
 
+![image](https://github.com/dspataru/DV-project-three-group-five/assets/135036996/8c05a236-c777-48f1-82bc-f0c9663e5556)
+
+The photo above shows the 100000 portfolios plotted by return and risk, we can see a diagonal line forming, this is called the Efficiency Frontier in finance. These are the most optimal portfolios.
+
 - **Mean-Variance Optimization**
 
 Mean-variance optimization is a process of allocation weights in a manner that maximizes the Sharpe Ratio, ie. risk adjusted returns, of the portfolio.
+
+<img width="638" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/be6652e0-5cde-4103-9386-647ed65bf9c1">
+
 
 - **Hierarchal Risk Parity (HRP) portfolio**
 
 The HRP method works by finding subclusters of similar assets based on returns and constructing a hierarchy from these clusters to generate weights for each asset.
 
+<img width="635" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/a1fccd4e-ced7-4243-96b2-85b212a5f739">
+
 - **Mean Conditional Value at Risk (mCVAR)**
 
 It works by measuring the worst-case scenarios for each asset in the portfolio, which is represented here by losing the most money. The worst-case loss for each asset is then used to calculate weights to be used for allocation for each asset.
 
+<img width="638" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/db6a81a5-f1b3-4eda-8023-7675bbbc4dc0">
+
+
 How we built these models:
 
-- Minimum-variance portfolio and maximum-return portfolio weights are calculated using quadratic minimization models.  The function is given the returns, risk and covariance matrix of the 5 ETFs. We set the constraints (such as weights have to sum to 1) and targets (target return or desired risk value), and solve for the weights. We used two libraries on python to solve for the weights, Scipy and CVXPY. Scipy calculated weights that did not allow for short selling (non-negative weights) and CVXPY calculated weights that allows for short selling.
+- Minimum-variance portfolio and maximum-return portfolio weights are calculated using quadratic minimization models.  The function is given the returns, risk and covariance matrix of the 5 ETFs. We set the constraints (such as weights have to sum to 1) and targets (target return or desired risk value), and solve for the weights. We used two libraries on python to solve for the weights, Scipy and CVXPY. Scipy calculated weights that did not allow for short selling (non-negative weights) and CVXPY calculated weights that allows for short selling. Here's an example of the code:
+
+<img width="427" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/446073ef-bff0-411c-ad74-2af52f35bcab">
 
 - Mean-Variance Optimization was calculated using PyPortfolioOpt library. The function is given the prices of the 5 ETFs over a period of time, and it maximizes Sharpe Ratio under given constraints.
 
 - HRP and mCVAR models were calculated using PyPortfolioOpt library. These models overcome the big pitfall of mean-variance optimization, which makes many simplifying assumptions such as normally distributed returns.
 
-- The Monte Carlo simulations generated 100,000 portfolios of different returns and weights.
+- The Monte Carlo simulations generated 100,000 portfolios of different returns and weights. Here's a snippet of the code:
+
+<img width="426" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/4e56a32a-64ad-49bc-9dd1-c2a08a53f64e">
 
 For the purpose of the project we are assuming the ability to make non-discrete purchases of the ETFs.
 
@@ -201,6 +227,7 @@ SPY: 31%
 VGK: 2%
 SCHE: 0%
 VONG: 4%
+![image](https://github.com/dspataru/DV-project-three-group-five/assets/135036996/a950f905-8daa-4f24-a0e4-874aba631cf1)
 
 Balanced:
 
@@ -209,6 +236,7 @@ SPY: 42%
 VGK: 8%
 SCHE: 5%
 VONG: 12%
+![image](https://github.com/dspataru/DV-project-three-group-five/assets/135036996/a479bdeb-9238-45d9-ad30-2177eaa3d2b9)
 
 Growth
 
@@ -217,6 +245,10 @@ SPY: 36%
 VGK: 15%
 SCHE: 8%
 VONG: 24%
+![image](https://github.com/dspataru/DV-project-three-group-five/assets/135036996/272fca65-9eda-437a-9d7b-fa8fc673fe63)
+
+![image](https://github.com/dspataru/DV-project-three-group-five/assets/135036996/b3f01ace-0014-4241-b477-1ade5dac860f)
+
 
 ### Load & Flask API
 
@@ -334,17 +366,26 @@ The following dashboard requirements were documented:
 - Donut chart requirements:
     - Shall display the proportion of money invested in each ETF when hovering over a section of the chart
     - Shall update the proportions depending on which portfolio is selected (needs to update based on a button press)
+      <img width="358" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/8483bbbc-2804-47a1-83a2-ccb1a4cfffa2">
+
 - Gauge chart requirements:
     - Shall show which portfolio is selected (needs to update based on a button press)
+      <img width="357" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/da173f8d-4af0-43a8-9926-1dcde8404f9a">
+
 - Line chart requirements:
     - Shall show the history of the investment change over time for each portfolio (needs to update based on a button press)
     - Shall be able to select YTD, 1Y, and 2Y views (needs to update based on a button press)
     - Shall be able to receive a start and end date from the user and update the chart accordingly (needs to update based on a calendar selection)
+      <img width="712" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/16ff9ce0-4fa7-451a-8138-39d9ff307398">
+
 - Current portfolio value requirements:
     - Shall show the current portfolio amount, the percent change from the last time the database was updated, and show an arrow indicating whether the percent change is positive (arrow up) or negative (arrow down)
     - The font colour of the percent change shall be green when positive and red when negative
+      <img width="142" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/5df9ff48-fa7e-4f07-86f5-f1290fd18cc9">
+
 - ETF table summary requirements:
     - Shall show the ETF name, ticker symbol, latest closing price, trading volume, and % change from when the database was last updated
+    <img width="731" alt="image" src="https://github.com/dspataru/DV-project-three-group-five/assets/135036996/e318e68d-5e1a-410e-a16d-9a26faa55b5c">
 
 In order to achieve the above requirements, two JavaScript web visualization libraries were used:
 Chart.js (https://www.chartjs.org/docs/latest/)
