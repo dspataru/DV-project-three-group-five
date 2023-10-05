@@ -1,3 +1,7 @@
+<!-- /* Code was adapted from the youtube tutorials: https://www.youtube.com/watch?v=FazgJVnrVuI&t=22s
+  and https://www.youtube.com/watch?v=BOF79TAIkYQ
+// and modified to meet the requirements of the dashboard. */ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +26,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
+<<<<<<< HEAD
+=======
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.0.0/d3.min.js"></script>
+>>>>>>> 36a04bc4e32be091d7054c398428403b63cb3edf
     <script src='https://cdn.plot.ly/plotly-2.26.0.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
@@ -134,7 +142,7 @@
                 <li><span class="material-symbols-sharp" id="BOND">
                   crop_16_9
                   </span>
-                  <h3>Bond</h3></li>
+                  <h3>BOND</h3></li>
                 <li><span class="material-symbols-sharp" id="SPY">
                   crop_16_9
                   </span>
@@ -184,9 +192,9 @@
             <div class="date">
                 <li><h3>Date Range</h3></li>
                 <li><h3>From:</h3></li>
-                  <input type = "date">
+                  <input type = "startDate">
                   <li><h3>To:</h3></li>
-                  <input type = "date">
+                  <input type = "endDate">
             </div>
           </ul>
           <ul>
@@ -205,50 +213,14 @@
           <table id="recent-orders--table">
             <thead>
               <tr>
-                <th>ETF Name</th>
                 <th>Ticker Symbol</th>
                 <th>Closing Price</th>
                 <th>Trading Volume</th>
                 <th>% Change</th>
               </tr>
             </thead>
-            <tbody>
-               <!-- Add tbody here | JS insertion -->
-              <tr>
-                <td>Pimco Active Bond Exchange-Traded Fund</td>
-                <td>BOND</td>
-                <td>$980.37</td>
-                <td>125</td>
-                <td>27.8%</td>
-              </tr>
-              <tr>
-                <td>Schwab Emerging Markets Equity ETF</td>
-                <td>SCHE</td>
-                <td>$270.37</td>
-                <td>80</td>
-                <td>11.8%</td>
-              </tr>
-              <tr>
-                <td>SPDR S&P 500 ETF Trust</td>
-                <td>SPY</td>
-                <td>$1100.98</td>
-                <td>29</td>
-                <td>40%</td>
-              </tr>
-              <tr>
-                <td>Vanguard FTSE Europe ETF</td>
-                <td>VGK</td>
-                <td>$259.37</td>
-                <td>50</td>
-                <td>53%</td>
-              </tr>
-              <tr>
-                <td>Vanguard Russell 1000 Growth ETF</td>
-                <td>VONG</td>
-                <td>$89.37</td>
-                <td>15</td>
-                <td class="warning">-10%</td>
-              </tr>
+            <tbody id="tableBody">
+               <!-- Table body is updated with JS code from ETF_table_summary.js -->
             </tbody>
           </table>
           <a href="#">Back to top</a>
@@ -343,9 +315,11 @@
           <li><span class="material-icons-sharp">
             arrow_upward
             </span>    
-            <h6 id="currentPortfolioValue"></h6></li>
+            <h6>$1099588.04</h6>
+            <!-- <h6 id="currentPortfolioValue"></h6></li> -->
             <!-- <p> Change since last updated: </p>-->
-            <li><p class="success " id="percentChange">20 %</p> 
+            <li>0.4%</li>
+            <!-- <li><p class="success " id="percentChange">%</p>  -->
           </ul>
           </div>
           <div class="profile">
@@ -362,52 +336,63 @@
       <div class="sales-analytics">
         <h1>ETF Stock Info</h1>
         <div class="ETF_insights bonds">
-          <a href="/" ><h6>BOND</h6></a>
+          <div class="heading">
+          <a href="https://finance.yahoo.com/quote/BOND?p=BOND&.tsrc=fin-srch" ><h6>BOND</h6></a>
           <small class="text-muted">2 min ago</small>
+        </div>
         <div class="right">
            <div class="info">
-            <h3 class = "success"> $ 1,456 </h3>
-            <h5 class = "success"> +29% </h5>   
+            <h3 class = "danger"> $ 87.08 </h3>
+            <h5 class = "danger"> -0.92% </h5>  
+            <a target="_blank" rel="noopener noreferrer" class="Fl(end) Mt(-30px)" href="/chart/%5EDJI" data-symbol="^DJI" title="Dow 30 Chart">
            </div>
           </div>
           </div>
           <div class=" ETF_insights SPY">
-            <a href="/" ><h6>SPY</h6></a>
+            <div class="heading">
+            <a href="https://finance.yahoo.com/quote/SPY?p=SPY&.tsrc=fin-srch"><h6>SPY</h6></a>
             <small class="text-muted">2 min ago</small>
+          </div>
           <div class="right">
              <div class="info">
-              <h3 class = "danger"> $ 1,950</h3>
-              <h5 class = "danger"> -6% </h5>   
+              <h3 class = "danger"> $ 427.3</h3>
+              <h5 class = "danger"> -0.03% </h5>   
              </div>
             </div>
             </div>
-            <div class="ETF_insights SPY">
-              <a href="/" ><h6>VONG</h6></a>
+            <div class="ETF_insights VONG">
+              <div class="heading">
+              <a href="https://finance.yahoo.com/quote/VONG?p=VONG" ><h6>VONG</h6></a>
               <small class="text-muted">2 min ago</small>
+            </div>
             <div class="right">
                <div class="info">
-                <h3 class = "success"> $ 2550</h3>
-                <h5 class = "success"> +4% </h5>   
+                <h3 class = "success"> $ 69.02</h3>
+                <h5 > 0.862% </h5>   
                </div>
               </div>
               </div>
               <div class="ETF_insights VGK">
-                <a href="/" ><h6>VGK</h6></a>
+                <div class="heading">
+                <a href="https://finance.yahoo.com/quote/VGK?p=VGK&.tsrc=fin-srch" ><h6>VGK</h6></a>
                 <small class="text-muted">2 min ago</small>
+              </div>
               <div class="right">
                  <div class="info">
-                  <h3 class = "danger"> $ 2550</h3>
-                  <h5 class = "danger"> -4% </h5>   
+                  <h3 class = "danger"> $ 56.93</h3>
+                  <h5 class = "danger"> -1.7% </h5>   
                  </div>
                 </div>
                 </div>
                 <div class="ETF_insights SCHE">
-                  <a href="/" ><h6>SCHE</h6></a>
+                  <div class="heading">
+                  <a href="https://finance.yahoo.com/quote/SCHE?p=SCHE&.tsrc=fin-srch" ><h6>SCHE</h6></a>
                   <small class="text-muted">2 min ago</small>
+                </div>
                 <div class="right">
                    <div class="info">
-                    <h3 class = "success"> $ 2940</h3>
-                    <h5 class = "success"> +10% </h5>   
+                    <h3 class = "danger"> $ 23.86</h3>
+                    <h5 class = "danger"> -0.33% </h5>   
                    </div>
                   </div>
                   </div> 
@@ -416,26 +401,55 @@
             <div class="updates">
               <div class="update">
                 <div class="ETF_desc">
-                  <p><b>Pimco Active Bond Exchange-Traded Fund (BOND) </b>is a well-diversified fund including government related, securitized and investment grade corporate debt. 75% of the portfolio holdings being investment-grade credit ratings, and 65% boast AAA ratings. </p>
-                  <small class="text-muted">AAA rated</small> 
+                  <a href="https://finance.yahoo.com/quote/BOND?p=BOND&.tsrc=fin-srch" >
+                  <p><b>Pimco Active Bond Exchange-Traded Fund (BOND) </b>
+                    is a well-diversified fund including government related, 
+                    securitized and investment grade corporate debt. 75% of the portfolio holdings 
+                    being investment-grade credit ratings, and 65% boast AAA ratings. </p>
+                  <small class="text-muted">----AAA rated---Lowest Risk----</small> 
                 </div>
               </div>
               <div class="update">
                 <div class="ETF_desc">
-                  <p><b>Vanguard FTSE Europe ETF (VGK)</b> allocates its investments to both emerging stocks and emerging nations, including but not limited to China, Taiwan, India, and Brazil. The fund's primary sectors of focus are financial services, technology, and consumer cyclical industries.</p>
-                  <small class="text-muted">Higher levels of risk</small> 
+                  <a href="https://finance.yahoo.com/quote/VGK?p=VGK&.tsrc=fin-srch" >
+                  <p><b>Vanguard FTSE Europe ETF (VGK)</b> has various stocks from many different sectors, 
+                    with its three biggest industries being financial services, healthcare and industrials. 
+                    It is advantageous because of its numerous stocks and industries across the 
+                    European markets, aiming to spread investor risk appropriately.</p></a>
+                  <small class="text-muted">------Moderate Volatality-----</small> 
                 </div>
             </div>
             <div class="update">
               <div class="ETF_desc">
-                <p><b>SPDR S&P 500 ETF Trust (SPY)</b> trades on the NYSE Arca and is designed to track the S&P 500 stock market index. The S&P 500 represents 80% of the North American market and includes companies across all sectors. It is frequently used as a benchmark for the market as whole.</p>
-                <small class="text-muted">Stable or risky?</small> 
+                <a href="https://finance.yahoo.com/quote/SPY?p=SPY&.tsrc=fin-srch" ></a>
+                <p><b>SPDR S&P 500 ETF Trust (SPY)</b> trades on the NYSE Arca and is designed to track the 
+                  S&P 500 stock market index. The S&P 500 represents 80% of the North American market and 
+                  includes companies across all sectors. It is frequently used as a benchmark for the market
+                   as whole.</p></a>
+                <small class="text-muted">------Moderate Volatality-----</small> 
               </div>
             </div>
             <div class="update">
               <div class="ETF_desc">
-                <p><b>Schwab Emerging Markets Equity ETF (SCHE)</b> invests in emerging stocks as well as emerging countries such as China, Taiwan, India and Brazil.  Its top sectors are financial services, technology and consumer cyclical.</p>
-                <small class="text-muted">Higher levels of risk</small> 
+                <a href="https://finance.yahoo.com/quote/SCHE?p=SCHE&.tsrc=fin-srch" ></a>
+                <p><b>Schwab Emerging Markets Equity ETF (SCHE)</b> invests in emerging stocks as well as 
+                  emerging countries such as China, Taiwan, India and Brazil.  Its top sectors are financial 
+                  services, technology and consumer cyclical.</p>
+                <small class="text-muted">------Higher Volatality-----</small> 
+              </div>
+            </div>
+            <div class="update">
+              <div class="ETF_desc">
+                <a href="https://finance.yahoo.com/quote/VONG?p=VONG" ></a>
+                <p><b>Vanguard Russell 1000 Growth ETF (VONG)</b> holds a portfolio of approximately 500 
+                  prominent U.S. companies that exhibit substantial growth prospects. A substantial 46.30%
+                   of the fund's assets are allocated to the technology sector. This ETF is closely tied 
+                   to the Russell 1000 Growth Index, providing access to large-cap enterprises operating 
+                   within the growth-oriented segment of the U.S. stock market. Companies within this 
+                   growth category present significant profit potential as they are in their initial 
+                   developmental stages, but this also elevates the associated risk level for this asset 
+                   class.</p>
+                <small class="text-muted">------Higher Volatality-----</small> 
               </div>
             </div>
           </div>
@@ -449,9 +463,14 @@
     <script src="static/js/doughnut_chart_test.js"></script>
     <script src="static/js/line_chart_test.js"></script>
     <script src="static/js/gauge_chart.js"></script>
-    <script src="static/js/current_portfolio_value.js"></script>
+    <script src="static/js/current_portfolio_value_test.js"></script>
     <script src="static/js/update_charts.js"></script>
     <script src="static/js/initialize_charts.js"></script>
+<<<<<<< HEAD
+=======
+    <script src="static/js/ETF_table_summary.js"></script>
+    <!-- <script src="static/js/calendar.js"></script> -->
+>>>>>>> 36a04bc4e32be091d7054c398428403b63cb3edf
 
 
 </body>

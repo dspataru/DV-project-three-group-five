@@ -19,11 +19,28 @@ function portfolioLabels(portfolioData) {
   return labels;
 }
 
+<<<<<<< HEAD
 function intializeDonutChart(weights) {
 
   let data = {
     weight: [weights.BOND, weights.SCHE, weights.SPY, weights.VGK, weights.VONG],
     investmentAmount: calculateInvestmentAmount(weights)
+=======
+
+// Initialize the chart with the initial data
+function initializeDonutChart(initialData) {
+    // Define an array to store chart instances
+let chartInstances = [];
+// Destroy existing chart instances
+chartInstances.forEach(chart => chart.destroy());
+chartInstances = [];
+
+  let doughnutChart = document.getElementById('pie_chart').getContext('2d');
+
+  let data = {
+    weight: initialData,
+    investmentAmount: calculateInvestmentAmount(initialData)
+>>>>>>> 36a04bc4e32be091d7054c398428403b63cb3edf
   }
 
   // defining the parameters for the doughnut chart
@@ -71,15 +88,21 @@ function intializeDonutChart(weights) {
       }
     } 
   };
+<<<<<<< HEAD
 
   // --------------------------------
   // Initializing the doughnut chart.
   // --------------------------------
   let ETF_doughnutChart = new Chart(doughnutChart, {
+=======
+  
+  ETF_doughnutChart = new Chart(doughnutChart, {
+>>>>>>> 36a04bc4e32be091d7054c398428403b63cb3edf
     type: 'doughnut',
     data: doughnut_data,
     options: options
   });
+<<<<<<< HEAD
 
   return ETF_doughnutChart;
 }
@@ -94,4 +117,24 @@ function weightAPIcall(weightURL, p) {
     ETF_doughnutChart.update();
   })
 }
+=======
+}
+
+// Make an API request to fetch new data and update the chart
+function weightAPIcall(weightURL, p) {
+
+  d3.json(weightURL + p)
+  .then(function(data) {
+
+    console.log(data);
+    let new_data = Object.values(data).filter((value, key) => key !== 'portfolio');
+    console.log(new_data.slice(0,5));
+    ETF_doughnutChart.data = new_data.slice(0,5);
+    ETF_doughnutChart.update();
+  
+  })
+
+}; 
+
+>>>>>>> 36a04bc4e32be091d7054c398428403b63cb3edf
 

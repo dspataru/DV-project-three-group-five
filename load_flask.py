@@ -1,6 +1,6 @@
 # Import dependencies
 from pymongo import MongoClient
-import json
+
 
 # Create an instance of MongoClient
 mongo = MongoClient(port=27017)
