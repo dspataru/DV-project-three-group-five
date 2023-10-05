@@ -1,3 +1,7 @@
+ /* Code was adapted from the youtube tutorials: https://www.youtube.com/watch?v=FazgJVnrVuI&t=22s
+  and https://www.youtube.com/watch?v=BOF79TAIkYQ
+// and modified to meet the requirements of the dashboard. */ 
+
 /* ROOT VARIABLES */
 :root {
   --color-primary: #7380ec;
